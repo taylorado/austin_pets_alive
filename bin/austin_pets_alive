@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
 require './lib/austin_pets_alive'
+require "bundler/setup"
+require "austin_pets_alive"
 
 AustinPetsAlive::CLI.new.call
