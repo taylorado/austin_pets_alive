@@ -16,7 +16,7 @@ attr_accessor :name, :breed, :age, :url
       current_dog.name = dog.css("a").attribute("title").value
       current_dog.age = dog.css("h3.p").text
       current_dog.breed = "Dog"
-      current_dog.url = dog.css("a").attribute("href").value
+      current_dog.url = dog.css("a").attribute("href").value 
       scraped_dogs << current_dog
     end
     scraped_dogs
