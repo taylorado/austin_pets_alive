@@ -27,7 +27,9 @@ class AustinPetsAlive::CLI
       input = gets.strip.downcase
 
       if input.to_i > 0
-       puts @dogs[input.to_i-1]
+       current_dog = @dogs[input.to_i-1]
+       puts "#{current_dog.name} - #{current_dog.age} - #{current_dog.breed}"
+       puts "More Information: #{current_dog.url}"
       elsif input == "list"
         list_dogs
       else
