@@ -16,6 +16,8 @@ class AustinPetsAlive::CLI
     @dogs = AustinPetsAlive::Dogs.today
     @dogs.each.with_index(1)  do |dog, i|
       puts "#{i}. #{dog.name} - #{dog.breed}"
+      puts "#{dog.age}"
+      puts "https://www.austinpetsalive.org#{dog.url}"
       end
   end
 
