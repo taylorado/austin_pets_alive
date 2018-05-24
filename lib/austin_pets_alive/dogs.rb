@@ -1,23 +1,25 @@
 class AustinPetsAlive::Dogs
 attr_accessor :name, :breed, :age, :url
+
+
   def self.today
     #scrape dogs from Austin pets alive
     self.scrape_dogs
   end
 
-def self.scrape_dogs
-  dog_index = Nokogiri::HTML(open("https://www.austinpetsalive.org/adopt/dogs/"))
-  scraped_dogs = []
-  #iterate over each
-  dog_index.css("div.pet_listing_area").each do |dog|
-    scraped_dogs << {
-        :name => dog.css("a.title").text,
-       # :location => student.css("p.student-location").text,
-        #:profile_url => student.css("a").attribute("href").value
-    }
+  def self.scrape_dogs
+    dog_index = Nokogiri::HTML(open("https://www.austinpetsalive.org/adopt/dogs/"))
+    scraped_dogs = [] 
+    #iterate over each
+    dog_index.css("li.pet").each do |dog|
+      current_dog = self.new
+      current_dog.name = dog.css("a").attribute("title").value
+      current_dog.age = "4"
+      current_dog.breed = "Dog"
+      scraped_dogs << current_dog
+    end
+    scraped_dogs
   end
-  scraped_dogs
-end
 
   #def self.scrape_dogs
    # dogs = []
