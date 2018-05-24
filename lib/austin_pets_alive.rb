@@ -1,5 +1,4 @@
-require "austin_pets_alive/version"
+require_relative "./austin_pets_alive/version"
+require_relative "./austin_pets_alive/cli"
 
-module AustinPetsAlive
-  # Your code goes here...
-end
+

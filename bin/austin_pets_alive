@@ -1,3 +1,5 @@
 #!/usr/bin/env ruby
 
-puts "Hello World!"
+require './lib/austin_pets_alive'
+
+AustinPetsAlive::CLI.new.call
