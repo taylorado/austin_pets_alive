@@ -1,5 +1,5 @@
 class AustinPetsAlive::Dogs
-attr_accessor :name, :breed, :age, :url
+attr_accessor :name, :breed, :sex, :age, :url
 
 
   def self.today
@@ -16,7 +16,8 @@ attr_accessor :name, :breed, :age, :url
       current_dog.name = dog.css("a").attribute("title").value
       @details = dog.at('p:contains("ale")').text.strip.split(/\n/)
       current_dog.age = @details[3].to_s
-      current_dog.breed = "Dog"
+      current_dog.breed = @details[2].to_s
+      current_dog.sex = @details[1].to_s
       current_dog.url = dog.css("a").attribute("href").value
       scraped_dogs << current_dog
     end
