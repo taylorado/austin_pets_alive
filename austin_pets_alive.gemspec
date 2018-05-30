@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ['donlan@gmail.com']
 
   spec.summary       = 'Browse dogs available to for adoption from Austin Pets Alive'
-  spec.description   = 'Pulls publicly avaialble dog listings from AustinPetsAlive.org into a CLI'
+  spec.description   = 'Pulls publicly available dog listings from AustinPetsAlive.org into a CLI'
   spec.homepage      = 'https://github.com/taylorado/austin_pets_alive'
   spec.license       = 'MIT'
 
