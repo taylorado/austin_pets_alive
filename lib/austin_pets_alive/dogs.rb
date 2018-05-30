@@ -14,7 +14,8 @@ attr_accessor :name, :breed, :age, :url
     dog_index.css("li.pet").each do |dog|
       current_dog = self.new
       current_dog.name = dog.css("a").attribute("title").value
-      current_dog.age = dog.at('p:contains("ale")').text.strip 
+      @details = dog.at('p:contains("ale")').text.strip.split(/\n/)
+      current_dog.age = @details[3].to_s
       current_dog.breed = "Dog"
       current_dog.url = dog.css("a").attribute("href").value
       scraped_dogs << current_dog
