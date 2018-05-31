@@ -6,16 +6,16 @@ class AustinPetsAlive::CLI
       Austin Pets Alive!
       Let's Find You A Dog!
     DOC
-
+    AustinPetsAlive::Dogs.scrape_dogs
+    puts "#{AustinPetsAlive::Dogs.all.count} total dogs found!"
     list_dogs
     menu
     goodbye
   end
 
   def list_dogs
-    @dogs = AustinPetsAlive::Dogs.today
-    puts "#{@dogs.count} total dogs found!"
-    @dogs.each.with_index(1) do |dog, i|
+    puts '10 dogs displayed per page.'
+    AustinPetsAlive::Dogs.all[0,10].each.with_index(1) do |dog, i|
       puts "#{i}. '#{dog.name}' - #{dog.breed} - #{dog.age} old"
     end
   end
@@ -27,12 +27,10 @@ class AustinPetsAlive::CLI
       puts "Enter the number of the dog you would like more information on.  Type 'exit' to exit"
       input = gets.strip.downcase
 
-      if input.to_i > 0
-        current_dog = @dogs[input.to_i - 1]
-        puts "#{current_dog.name} is a #{current_dog.age} old #{current_dog.sex} #{current_dog.breed}"
-        puts "More Information: #{current_dog.url}"
+      if input.to_i > 0 && input.to_i <= AustinPetsAlive::Dogs.all.count
+        AustinPetsAlive::Dogs.show_dog(input.to_i - 1)
       elsif input != 'exit'
-        puts 'Invalid input. Please enter a number to see more information on a dog, or type list or exit.'
+        puts 'Invalid input. Try Again.'
 
       end
     end
