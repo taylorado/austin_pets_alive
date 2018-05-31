@@ -32,20 +32,20 @@ class AustinPetsAlive::CLI
     input = nil
     while input != 'exit'
       input = gets.strip.downcase
+
       if input.to_i > 0 && input.to_i <= 10
         AustinPetsAlive::Dogs.show_dog(input.to_i - 1 + @@start_point)
       elsif input == 'next' || input == 'n'
         @@start_point += 10
+
         if @@start_point < AustinPetsAlive::Dogs.all.count
           list_dogs
         else
           puts "There are no more dogs!  Type 'exit' to exit."
-
         end
 
       elsif input != 'exit'
         puts 'Invalid input. Try Again.'
-
       end
     end
 
