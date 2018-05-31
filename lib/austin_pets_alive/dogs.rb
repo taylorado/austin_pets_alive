@@ -7,7 +7,7 @@ class AustinPetsAlive::Dogs
     dog_index = Nokogiri::HTML(open('https://www.austinpetsalive.org/adopt/dogs/'))
     # iterate over each
     dog_index.css('li.pet').each do |dog|
-      current_dog = new
+      current_dog = self.new
       current_dog.name = dog.css('a').attribute('title').value
       current_dog.url = "https://www.austinpetsalive.org#{dog.css('a').attribute('href').value}"
       @details = dog.at('p:contains("ale")').text.strip.split(/\n/)
