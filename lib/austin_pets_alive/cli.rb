@@ -1,6 +1,9 @@
 # Our CLI Controller
 
 class AustinPetsAlive::CLI
+
+  @@start_point = 0.to_int
+
   def call
     puts <<-DOC
       Austin Pets Alive!
@@ -14,10 +17,13 @@ class AustinPetsAlive::CLI
   end
 
   def list_dogs
-    puts '10 dogs displayed per page.'
-    AustinPetsAlive::Dogs.all[0,10].each.with_index(1) do |dog, i|
+    puts "10 dogs displayed per page."
+    @dog_page = AustinPetsAlive::Dogs.all[@@start_point, 10]
+    @dog_page.each.with_index(1) do |dog, i|
       puts "#{i}. '#{dog.name}' - #{dog.breed} - #{dog.age} old"
     end
+    @@start_point += 10
+
   end
 
   def menu
@@ -28,7 +34,11 @@ class AustinPetsAlive::CLI
       input = gets.strip.downcase
 
       if input.to_i > 0 && input.to_i <= AustinPetsAlive::Dogs.all.count
-        AustinPetsAlive::Dogs.show_dog(input.to_i - 1)
+        AustinPetsAlive::Dogs.show_dog(input.to_i - 11 + @@start_point)
+      elsif input == 'next'
+
+        list_dogs
+
       elsif input != 'exit'
         puts 'Invalid input. Try Again.'
 
