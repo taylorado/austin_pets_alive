@@ -22,7 +22,7 @@ class AustinPetsAlive::CLI
     @dog_page.each.with_index(1) do |dog, i|
       puts "#{i}. '#{dog.name}' - #{dog.breed} - #{dog.age} old"
     end
-    @@start_point += 10
+
 
   end
 
@@ -30,13 +30,13 @@ class AustinPetsAlive::CLI
     # more information on one of these dogs?  or move on to next set of most recent dogs?
     input = nil
     while input != 'exit'
-      puts "Enter the number of the dog you would like more information on.  Type 'exit' to exit"
+      puts "Enter the number of the dog you would like more information on.  Type 'next' to see the next 10 dogs.  Type 'exit' to exit"
       input = gets.strip.downcase
 
-      if input.to_i > 0 && input.to_i <= AustinPetsAlive::Dogs.all.count
-        AustinPetsAlive::Dogs.show_dog(input.to_i - 11 + @@start_point)
+      if input.to_i > 0 && input.to_i <= @dog_page.count
+        AustinPetsAlive::Dogs.show_dog(input.to_i - 1 + @@start_point)
       elsif input == 'next'
-
+        @@start_point += 10
         list_dogs
 
       elsif input != 'exit'
