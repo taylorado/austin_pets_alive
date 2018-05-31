@@ -33,7 +33,7 @@ class AustinPetsAlive::CLI
       puts "Enter the number of the dog you would like more information on.  Type 'next' to see the next 10 dogs.  Type 'exit' to exit"
       input = gets.strip.downcase
 
-      if input.to_i > 0 && input.to_i <= @dog_page.count
+      if input.to_i > 0 && input.to_i <= 10
         AustinPetsAlive::Dogs.show_dog(input.to_i - 1 + @@start_point)
       elsif input == 'next'
         @@start_point += 10
