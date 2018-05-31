@@ -30,7 +30,7 @@ class AustinPetsAlive::CLI
       if input.to_i > 0
         current_dog = @dogs[input.to_i - 1]
         puts "#{current_dog.name} is a #{current_dog.age} old #{current_dog.sex} #{current_dog.breed}"
-        puts "More Information: https://www.austinpetsalive.com#{current_dog.url}"
+        puts "More Information: #{current_dog.url}"
       elsif input != 'exit'
         puts 'Invalid input. Please enter a number to see more information on a dog, or type list or exit.'
 
