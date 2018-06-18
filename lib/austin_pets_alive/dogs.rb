@@ -22,6 +22,7 @@ class AustinPetsAlive::Dogs
   def self.show_dog(input)
     puts "#{@@scraped_dogs[input].name} is a #{@@scraped_dogs[input].age} old #{@@scraped_dogs[input].sex} #{@@scraped_dogs[input].breed}"
     puts "More Information: #{@@scraped_dogs[input].url}"
+    puts "Enter the number of the dog you would like more information on.  Type 'next' to see the next 10 dogs.  Type 'exit' to exit"
   end
 
   def self.all
