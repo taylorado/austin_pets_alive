@@ -4,4 +4,6 @@ require './lib/austin_pets_alive'
 require 'bundler/setup'
 require 'austin_pets_alive'
 
+#call Austin Pets Alive
+
 AustinPetsAlive::CLI.new.call

@@ -19,6 +19,7 @@ class AustinPetsAlive::Dogs
     self.all
   end
 
+  #display details of one dog
   def self.show_dog(input)
     if input <= @@scraped_dogs.count
       puts "#{@@scraped_dogs[input].name} is a #{@@scraped_dogs[input].age} old #{@@scraped_dogs[input].sex} #{@@scraped_dogs[input].breed}"

@@ -22,7 +22,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Browse pets at Austin Pets Alive
 
 ## Development
 
