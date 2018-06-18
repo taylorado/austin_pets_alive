@@ -20,9 +20,13 @@ class AustinPetsAlive::Dogs
   end
 
   def self.show_dog(input)
-    puts "#{@@scraped_dogs[input].name} is a #{@@scraped_dogs[input].age} old #{@@scraped_dogs[input].sex} #{@@scraped_dogs[input].breed}"
-    puts "More Information: #{@@scraped_dogs[input].url}"
-    puts "Enter the number of the dog you would like more information on.  Type 'next' to see the next 10 dogs.  Type 'exit' to exit"
+    if input <= @@scraped_dogs.count
+      puts "#{@@scraped_dogs[input].name} is a #{@@scraped_dogs[input].age} old #{@@scraped_dogs[input].sex} #{@@scraped_dogs[input].breed}"
+      puts "More Information: #{@@scraped_dogs[input].url}"
+      puts "Enter the number of the dog you would like more information on.  Type 'next' to see the next 10 dogs.  Type 'exit' to exit"
+    else
+      puts "That number doesn't exist - there are only #{@@scraped_dogs.count} dogs on the list.  Enter the number of the dog you would like more information on.  Or type 'exit' to exit"
+    end
   end
 
   def self.all

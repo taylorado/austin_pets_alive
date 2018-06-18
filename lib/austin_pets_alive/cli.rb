@@ -2,7 +2,7 @@
 
 class AustinPetsAlive::CLI
 
-  @@start_point = 0    # tried to make this an instance variable but kept getting "undefined method `+' for nil:NilClass (NoMethodError)"
+  @@start_point = 0
 
   def call
     puts <<-DOC
