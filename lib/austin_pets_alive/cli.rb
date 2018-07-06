@@ -23,8 +23,6 @@ class AustinPetsAlive::CLI
       puts "#{i}. '#{dog.name}' - #{dog.breed} - #{dog.age} old"
     end
     puts "Enter the number of the dog you would like more information on.  Type 'next' to see the next 10 dogs.  Type 'exit' to exit"
-
-
   end
 
   def menu

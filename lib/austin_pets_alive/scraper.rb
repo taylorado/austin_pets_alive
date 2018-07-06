@@ -1,7 +1,5 @@
 class AustinPetsAlive::Scraper
 
-
-
   def self.scrape_dogs
     dog_index = Nokogiri::HTML(open('https://www.austinpetsalive.org/adopt/dogs/'))
     # iterate over each
@@ -16,6 +14,4 @@ class AustinPetsAlive::Scraper
       AustinPetsAlive::Dogs.new(name, breed, sex, age, url)
       end
   end
-
-
 end
