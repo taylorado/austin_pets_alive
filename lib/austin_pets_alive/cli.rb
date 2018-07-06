@@ -9,7 +9,7 @@ class AustinPetsAlive::CLI
       Austin Pets Alive!
       Let's Find You A Dog!
     DOC
-    AustinPetsAlive::Dogs.scrape_dogs
+    AustinPetsAlive::Scraper.scrape_dogs
     puts "#{AustinPetsAlive::Dogs.all.count} total dogs found!"
     list_dogs
     menu
@@ -32,9 +32,8 @@ class AustinPetsAlive::CLI
     input = nil
     while input != 'exit'
       input = gets.strip.downcase
-
       if input.to_i > 0 && input.to_i <= 10
-        AustinPetsAlive::Dogs.show_dog(input.to_i - 1 + @@start_point)
+        show_dog(input.to_i - 1 + @@start_point)
       elsif input == 'next' || input == 'n'
         @@start_point += 10
 
@@ -49,6 +48,16 @@ class AustinPetsAlive::CLI
       end
     end
 
+  end
+
+  def show_dog(input)
+    if input <= AustinPetsAlive::Dogs.all.count
+      puts "#{AustinPetsAlive::Dogs.all[input].name} is a #{AustinPetsAlive::Dogs.all[input].age} old #{AustinPetsAlive::Dogs.all[input].sex} #{AustinPetsAlive::Dogs.all[input].breed}"
+      puts "More Information: #{AustinPetsAlive::Dogs.all[input].url}"
+      puts "Enter the number of the dog you would like more information on.  Type 'next' to see the next 10 dogs.  Type 'exit' to exit"
+    else
+      puts "That number doesn't exist - there are only #{AustinPetsAlive::Dogs.all.count} dogs on the list.  Enter the number of the dog you would like more information on.  Or type 'exit' to exit"
+    end
   end
 
   def goodbye
